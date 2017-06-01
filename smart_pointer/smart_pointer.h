@@ -18,7 +18,7 @@ class smart_pointer
 {
 	T* m_pointer;
 public:
-	smart_pointer(T *p = 0);
+	smart_pointer(T *p = NULL);
 	smart_pointer(const smart_pointer<T>& obj);
 	smart_pointer<T>& operator = (const smart_pointer<T>& obj);
 	T* operator -> ();
@@ -38,7 +38,7 @@ template <typename T>
 smart_pointer<T>::smart_pointer(const smart_pointer<T>& obj)
 {
 	m_pointer = obj.m_pointer;
-	const_cast<smart_pointer<T>&>(obj).m_pointer = 0;
+	const_cast<smart_pointer<T>&>(obj).m_pointer = NULL;
 }
 
 template <typename T>
@@ -47,7 +47,7 @@ smart_pointer<T>& smart_pointer<T>::operator = (const smart_pointer<T>& obj)
 	if (this != &obj) {
 		delete m_pointer;
 		m_pointer = obj.m_pointer;
-		const_cast<smart_pointer<T>&>(obj).m_pointer = 0;
+		const_cast<smart_pointer<T>&>(obj).m_pointer = NULL;
 	}
 
 	return *this;
@@ -68,7 +68,7 @@ T& smart_pointer<T>::operator * ()
 template <typename T>
 bool smart_pointer<T>::is_null()
 {
-	return m_pointer == 0;
+	return m_pointer == NULL;
 }
 
 template <typename T>

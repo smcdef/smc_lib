@@ -1,0 +1,1 @@
+obj-y += exception_b.o

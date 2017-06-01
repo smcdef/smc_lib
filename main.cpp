@@ -1,6 +1,6 @@
 #include <iostream>
 #include "smart_pointer.h"
-//#include "exception.h"
+#include "exception_b.h"
 
 using namespace std;
 using namespace smc_lib;
@@ -27,8 +27,12 @@ public:
 
 int main(int argc, char const *argv[])
 {
-	smart_pointer<test> ptr = new test(100);
+	try {
+		THROW_EXCEPTION(invalid_parameter_exception, "test");
+	} catch (const invalid_parameter_exception& exp) {
+		cout << exp.message() << endl;
+		cout << exp.location() << endl;
+	}
 
-	ptr->print();
 	return 0;
 }
