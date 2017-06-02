@@ -18,6 +18,7 @@ CFLAGS :=
 # 添加头文件路径，不添加的话include目录下的头文件编译时找不到
 CFLAGS += -I $(shell pwd)/smart_pointer
 CFLAGS += -I $(shell pwd)/exception
+CFLAGS += -I $(shell pwd)/object
 #CFLAGS += $(shell pwd)/exception
 # 链接器的链接参数设置
 LDFLAGS := 
@@ -36,6 +37,7 @@ obj-y += main.o
 
 # 添加顶层目录下的子文件夹（注意目录名后面加一个/）
 obj-y += exception/
+obj-y += object/
 
 all: 
 	make -C ./ -f $(TOPDIR)/Makefile.build

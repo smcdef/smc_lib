@@ -84,16 +84,16 @@ public:
 	}
 };
 
-class no_enougt_memory_exception : public exception_b
+class no_enough_memory_exception : public exception_b
 {
 public:
-	no_enougt_memory_exception() : exception_b(NULL, NULL, 0) {}
-	no_enougt_memory_exception(const char *mesg) : exception_b(mesg, NULL, 0) {}
-	no_enougt_memory_exception(const char *file, int line) : exception_b(NULL, file, line) {}
-	no_enougt_memory_exception(const char *mesg, const char *file, int line) : exception_b(mesg, file, line) {}
+	no_enough_memory_exception() : exception_b(NULL, NULL, 0) {}
+	no_enough_memory_exception(const char *mesg) : exception_b(mesg, NULL, 0) {}
+	no_enough_memory_exception(const char *file, int line) : exception_b(NULL, file, line) {}
+	no_enough_memory_exception(const char *mesg, const char *file, int line) : exception_b(mesg, file, line) {}
 
-	no_enougt_memory_exception(const no_enougt_memory_exception& exp) : exception_b(exp) {}
-	no_enougt_memory_exception& operator= (const no_enougt_memory_exception& exp)
+	no_enough_memory_exception(const no_enough_memory_exception& exp) : exception_b(exp) {}
+	no_enough_memory_exception& operator= (const no_enough_memory_exception& exp)
 	{
 		exception_b::operator=(exp);
 

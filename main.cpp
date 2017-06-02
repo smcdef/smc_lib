@@ -1,12 +1,13 @@
 #include <iostream>
 #include "smart_pointer.h"
 #include "exception_b.h"
+#include "object.h"
 
 using namespace std;
 using namespace smc_lib;
 
 
-class test
+class test : public object
 {
 public:
 	test(int i = 0)
@@ -27,12 +28,9 @@ public:
 
 int main(int argc, char const *argv[])
 {
-	try {
-		THROW_EXCEPTION(invalid_parameter_exception, "test");
-	} catch (const invalid_parameter_exception& exp) {
-		cout << exp.message() << endl;
-		cout << exp.location() << endl;
-	}
+	object *obj1 = new test;
+
+	delete obj1;
 
 	return 0;
 }
