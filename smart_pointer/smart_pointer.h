@@ -9,12 +9,13 @@
  */
 #ifndef SMART_POINTER_H
 #define SMART_POINTER_H
+#include "object.h"
 
 namespace smc_lib
 {
 
 template <typename T>
-class smart_pointer
+class smart_pointer : public object
 {
 	T* m_pointer;
 public:

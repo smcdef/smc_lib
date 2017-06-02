@@ -19,7 +19,7 @@ CFLAGS :=
 CFLAGS += -I $(shell pwd)/smart_pointer
 CFLAGS += -I $(shell pwd)/exception
 CFLAGS += -I $(shell pwd)/object
-#CFLAGS += $(shell pwd)/exception
+
 # 链接器的链接参数设置
 LDFLAGS := 
 

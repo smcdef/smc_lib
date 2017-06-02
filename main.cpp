@@ -7,7 +7,7 @@ using namespace std;
 using namespace smc_lib;
 
 
-class test : public object
+class test
 {
 public:
 	test(int i = 0)
@@ -28,9 +28,8 @@ public:
 
 int main(int argc, char const *argv[])
 {
-	object *obj1 = new test;
+	smart_pointer<int> *sp = new smart_pointer<int>();
 
-	delete obj1;
-
+	delete sp;
 	return 0;
 }

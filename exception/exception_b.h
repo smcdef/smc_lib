@@ -10,13 +10,14 @@
 #ifndef EXCEPTION_B_H
 #define EXCEPTION_B_H
 #include <cstdio>
+#include "object.h"
 
 namespace smc_lib
 {
 
 #define THROW_EXCEPTION(exp, mesg) (throw exp(mesg, __FILE__, __LINE__))
 
-class exception_b
+class exception_b : public object
 {
 protected:
 	char *m_mesg;
@@ -111,6 +112,23 @@ public:
 
 	invalid_parameter_exception(const invalid_parameter_exception& exp) : exception_b(exp) {}
 	invalid_parameter_exception& operator= (const invalid_parameter_exception& exp)
+	{
+		exception_b::operator=(exp);
+
+		return *this;
+	}
+};
+
+class invalid_operator_exception : public exception_b
+{
+public:
+	invalid_operator_exception() : exception_b(NULL, NULL, 0) {}
+	invalid_operator_exception(const char *mesg) : exception_b(mesg, NULL, 0) {}
+	invalid_operator_exception(const char *file, int line) : exception_b(NULL, file, line) {}
+	invalid_operator_exception(const char *mesg, const char *file, int line) : exception_b(mesg, file, line) {}
+
+	invalid_operator_exception(const invalid_operator_exception& exp) : exception_b(exp) {}
+	invalid_operator_exception& operator= (const invalid_operator_exception& exp)
 	{
 		exception_b::operator=(exp);
 
