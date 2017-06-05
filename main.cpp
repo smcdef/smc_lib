@@ -1,7 +1,8 @@
 #include <iostream>
 #include "smart_pointer.h"
 #include "exception_b.h"
-#include "object.h"
+#include "static_list.h"
+#include "dynamic_list.h"
 
 using namespace std;
 using namespace smc_lib;
@@ -28,8 +29,34 @@ public:
 
 int main(int argc, char const *argv[])
 {
-	smart_pointer<int> *sp = new smart_pointer<int>();
+	dynamic_list<int> l(5);
+ 
+ 	for (int i = 0; i < l.capacity(); i++)
+ 		l.insert(0, i);
 
-	delete sp;
+ 	for (int i = 0; i < l.length(); i++)
+ 		cout << l[i] << endl;
+
+ 	try {
+ 		l[5] = 1;
+ 	}
+ 	catch(const exception_b& e) {
+ 		cout << e.location() << endl;
+ 		cout << e.message() << endl;
+ 	}
+
+ 	l.resize(6);
+
+ 	try {
+ 		l[5] = 1;
+ 	}
+ 	catch(const exception_b& e) {
+ 		cout << e.location() << endl;
+ 		cout << e.message() << endl;
+ 	}
+
+ 	for (int i = 0; i < l.length(); i++)
+ 		cout << l[i] << endl;
+
 	return 0;
 }

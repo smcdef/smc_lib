@@ -3,3 +3,4 @@
 *.out
 *project
 *workspace
+main.cpp
