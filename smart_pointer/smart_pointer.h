@@ -9,6 +9,7 @@
  */
 #ifndef SMART_POINTER_H
 #define SMART_POINTER_H
+
 #include "object.h"
 
 namespace smc_lib

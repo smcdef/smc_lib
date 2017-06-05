@@ -19,25 +19,24 @@ namespace smc_lib
 
 void exception_b::init(const char *mesg, const char *file, int line)
 {
-	m_mesg = (char *)malloc(strlen(mesg) + 1);
-	if (m_mesg != NULL)
-		m_mesg = strcpy(m_mesg, mesg);
-	else
+	if (mesg != NULL) {
+		m_mesg = (char *)malloc(strlen(mesg) + 1);
+		if (m_mesg != NULL)
+			m_mesg = strcpy(m_mesg, mesg);
+	} else {
 		m_mesg = NULL;
+	}
 
 	if (file != NULL) {
 		char sl[16] = {0};
 
 		sprintf(sl, "%d", line);
-		m_location = (char *)malloc(sizeof(file) + sizeof(sl) + 2);
+		m_location = (char *)malloc(strlen(file) + strlen(sl) + 2);
 		if (m_location != NULL) {
 			m_location = strcpy(m_location, file);
 			m_location = strcat(m_location, ":");
 			m_location = strcat(m_location, sl);
-		} else {
-			m_location = NULL;
 		}
-
 	} else {
 		m_location = NULL;
 	}
